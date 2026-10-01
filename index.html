@@ -7,7 +7,16 @@
   <title>FlipClock</title>
   <meta name="description" content="FlipClock — hora certa com elegante animação flip. Relógio ao vivo minimalista com temas e tela cheia." />
   <link rel="icon" type="image/png" href="./images/favicon.png" />
-  <link rel="apple-touch-icon" href="./images/favicon.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FlipClock" />
+  <meta name="application-name" content="FlipClock" />
+  <meta name="msapplication-TileColor" content="#0a0a0a" />
+  <meta name="msapplication-TileImage" content="./images/icon-192.png" />
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />
   <link rel="stylesheet" href="flip_animation.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
@@ -156,5 +165,12 @@
 
   <script src="lofi-config.js"></script>
   <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch((err) => console.warn("SW:", err));
+      });
+    }
+  </script>
 </body>
 </html>
